@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/profile.dart';
 import 'edit_profile_page.dart';
+import 'about_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -57,6 +58,16 @@ class _ProfilePageState extends State<ProfilePage> {
             icon: const Icon(Icons.edit),
             tooltip: 'Edit Profil',
           ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AboutPage()),
+              );
+            },
+            icon: const Icon(Icons.info_outline),
+            tooltip: 'About Me',
+          ),
         ],
       ),
 
@@ -66,9 +77,14 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             const SizedBox(height: 20),
 
-            const CircleAvatar(
-              radius: 60,
-              backgroundImage: AssetImage('assets/images/dinda.jpeg'),
+            ClipOval(
+              child: Image.asset(
+                'assets/images/dinda.jpeg',
+                width: 110,
+                height: 110,
+                fit: BoxFit.cover,
+                alignment: const Alignment(0, 0.7),
+              ),
             ),
 
             const SizedBox(height: 15),
