@@ -1,7 +1,48 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+import '../models/profile.dart';
+import 'edit_profile_page.dart';
+
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late Profile profil;
+
+  @override
+  void initState() {
+    super.initState();
+
+    profil = Profile(
+      nama: 'Dinda Putri',
+      nim: '1124160092',
+      prodi: 'Teknik Informatika',
+      kelas: 'SE3',
+      email: 'putdyenda@gmail.com',
+      hp: '-',
+      github: 'dynda21',
+      bio:
+          'Saya adalah mahasiswa Teknik Informatika '
+          'yang tertarik dengan teknologi dan pengembangan aplikasi.',
+    );
+  }
+
+  void editProfil() async {
+    final hasil = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => EditProfilePage(profile: profil)),
+    );
+
+    if (hasil != null) {
+      setState(() {
+        profil = hasil;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,11 +51,17 @@ class ProfilePage extends StatelessWidget {
         title: const Text('Profil Saya'),
         centerTitle: true,
         backgroundColor: Colors.pink[100],
+        actions: [
+          IconButton(
+            onPressed: editProfil,
+            icon: const Icon(Icons.edit),
+            tooltip: 'Edit Profil',
+          ),
+        ],
       ),
 
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
-
         child: Column(
           children: [
             const SizedBox(height: 20),
@@ -26,52 +73,46 @@ class ProfilePage extends StatelessWidget {
 
             const SizedBox(height: 15),
 
-            const Text(
-              'Dinda Putri',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            Text(
+              profil.nama,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 5),
 
-            const Text('1124160092', style: TextStyle(fontSize: 16)),
-
-            const Text('Teknik Informatika', style: TextStyle(fontSize: 16)),
-
-            const Text('Kelas SE3', style: TextStyle(fontSize: 16)),
+            Text(profil.nim),
+            Text(profil.prodi),
+            Text('Kelas ${profil.kelas}'),
 
             const SizedBox(height: 20),
 
-            const Text(
-              'Saya adalah mahasiswa Teknik Informatika '
-              'yang tertarik dengan teknologi dan pengembangan aplikasi.',
-              textAlign: TextAlign.center,
-            ),
+            Text(profil.bio, textAlign: TextAlign.center),
 
             const SizedBox(height: 25),
 
             Card(
               child: Column(
                 children: [
-                  const ListTile(
-                    leading: Icon(Icons.email, color: Colors.pink),
-                    title: Text('Email'),
-                    subtitle: Text('putdyenda@gmail.com'),
+                  ListTile(
+                    leading: const Icon(Icons.email, color: Colors.pink),
+                    title: const Text('Email'),
+                    subtitle: Text(profil.email),
                   ),
 
                   const Divider(),
 
-                  const ListTile(
-                    leading: Icon(Icons.phone, color: Colors.pink),
-                    title: Text('Nomor HP'),
-                    subtitle: Text('-'),
+                  ListTile(
+                    leading: const Icon(Icons.phone, color: Colors.pink),
+                    title: const Text('Nomor HP'),
+                    subtitle: Text(profil.hp),
                   ),
 
                   const Divider(),
 
-                  const ListTile(
-                    leading: Icon(Icons.code, color: Colors.pink),
-                    title: Text('GitHub'),
-                    subtitle: Text('dynda21'),
+                  ListTile(
+                    leading: const Icon(Icons.code, color: Colors.pink),
+                    title: const Text('GitHub'),
+                    subtitle: Text(profil.github),
                   ),
                 ],
               ),
