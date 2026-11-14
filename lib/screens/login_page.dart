@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'profile_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final VoidCallback onToggleTheme;
+
+  const LoginPage({super.key, required this.onToggleTheme});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -48,8 +50,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
 
       body: Center(
         child: SingleChildScrollView(
@@ -60,6 +64,15 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    onPressed: widget.onToggleTheme,
+                    icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+                    tooltip: isDark ? 'Light Mode' : 'Dark Mode',
+                  ),
+                ),
+
                 const Icon(Icons.account_circle, size: 100, color: Colors.pink),
 
                 const SizedBox(height: 15),
@@ -83,7 +96,6 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: Icon(Icons.email),
                     border: OutlineInputBorder(),
                     filled: true,
-                    fillColor: Colors.white,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -108,7 +120,6 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: const Icon(Icons.lock),
                     border: const OutlineInputBorder(),
                     filled: true,
-                    fillColor: Colors.white,
                     suffixIcon: IconButton(
                       icon: Icon(
                         showPassword ? Icons.visibility : Icons.visibility_off,
