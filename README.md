@@ -30,19 +30,16 @@ Beberapa fitur yang terdapat dalam aplikasi ini:
 6. Drawer untuk navigasi menu.
 7. Dark Mode dan Light Mode.
 
-Screenshot Aplikasi
+## Screenshot Aplikasi
 
-1. Halaman Login
+### 1. Halaman Login
+![Halaman Login](screenshots/login.jpeg)
 
-"Halaman Login" (screenshots/login.jpeg)
+### 2. Halaman Profile
+![Halaman Profile](screenshots/profile.jpeg)
 
-2. Halaman Profile
-
-"Halaman Profile" (screenshots/profile.jpeg)
-
-3. Halaman Edit Profile
-
-"Halaman Edit Profile" (screenshots/edit_profile.jpeg)
+### 3. Halaman Edit Profile
+![Halaman Edit Profile](screenshots/edit_profile.jpeg)
 
 Cara Menjalankan Aplikasi
 
