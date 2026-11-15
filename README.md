@@ -1,17 +1,28 @@
-# soal2_profil_app
+# Aplikasi Profil Dinda
 
-A new Flutter project.
+Aplikasi ini dibuat menggunakan Flutter untuk menampilkan profil pribadi.
 
-## Getting Started
+## Data Diri
 
-This project is a starting point for a Flutter application.
+Nama: Dinda Putri
 
-A few resources to get you started if this is your first Flutter project:
+NIM: 1124160092
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Kelas: SE3
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Program Studi: Teknik Informatika
+
+## Fitur
+
+- Login
+- Melihat profil
+- Mengedit profil
+- Halaman About Me
+- Menu Drawer
+- Dark Mode
+
+## Cara Menjalankan
+
+1. Buka folder project.
+2. Jalankan `flutter pub get`.
+3. Jalankan aplikasi dengan `flutter run`.
